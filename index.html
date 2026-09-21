@@ -80,7 +80,7 @@
   <div class="top">
     <span class="mark" aria-hidden="true"></span>
     <span class="brand">COSAC</span>
-    <span class="area">/ Almacén de Servicios</span>
+    <span class="area">/ Almacén de Comercial</span>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Cambiar entre modo oscuro y modo campo">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"></circle>
@@ -92,42 +92,31 @@
 
   <div class="rule"></div>
 
-  <h1>Elige el kit que te llevas</h1>
-  <p class="sub">Selecciona el kit, revisa su checklist y completa el registro de salida antes de retirarlo del almacén.</p>
+  <h1>Elige el kit que Entra/Sale</h1>
+  <p class="sub">Selecciona el kit, revisa su checklist y completa el registro de salida antes de retirarlo del almacén de Comercial.</p>
 
   <ul class="list" id="lista"></ul>
 
   <div class="notes">
     <p>Si te llevas el kit incompleto, marca en el formulario solo los ítems que salen.</p>
-    <p>Si el equipo sale hacia otra área, además del registro envía el correo de aviso.</p>
+    <p>Todo movimiento será registrado por correo automaticamente, asi que ten precaución.</p>
   </div>
 
 </div>
 
 <script>
-/* =========================================================================
-   EDITA SOLO ESTE BLOQUE
-   -------------------------------------------------------------------------
-   Una línea por kit. Reglas: cada línea termina en coma, los textos van
-   entre comillas simples. Si borras una comilla o una coma, la lista queda
-   en blanco.
-     codigo : el número que se ve en la placa
-     nombre : el nombre del kit
-     items  : cuántos ítems tiene (deja '' si aún no lo sabes)
-     url    : el enlace de tu formulario de Typeform
-     img    : nombre del archivo dentro de la carpeta img/ (deja '' si no hay foto)
-   ========================================================================= */
+
 var KITS = [
-  { codigo:'01', nombre:'Airius',                     items:'', url:'#', img:'' },
-  { codigo:'02', nombre:'Kit Intellinova',            items:'', url:'#', img:'' },
-  { codigo:'03', nombre:'SPM Instrument',             items:'', url:'#', img:'' },
-  { codigo:'04', nombre:'Electrónico',                items:'', url:'#', img:'' },
-  { codigo:'05', nombre:'HIKMICRO',                   items:'', url:'#', img:'' },
-  { codigo:'06', nombre:'SDT Ultrasound Solutions',   items:'', url:'#', img:'' },
-  { codigo:'07', nombre:'Herramientas y Consumibles', items:'', url:'#', img:'' },
-  { codigo:'08', nombre:'Módulos de Prueba',          items:'', url:'#', img:'' }
+  { codigo:'01', nombre:'Airius',                     items:'', url:'https://forms.cloud.microsoft/r/AyD4QcUs5h', img:'' },
+  { codigo:'02', nombre:'Kit Intellinova',            items:'', url:'https://forms.cloud.microsoft/r/q3tvj5v4xf', img:'' },
+  { codigo:'03', nombre:'SPM Instrument',             items:'', url:'https://forms.cloud.microsoft/r/PZa63Bd15T', img:'' },
+  { codigo:'04', nombre:'Electrónico',                items:'', url:'https://forms.cloud.microsoft/r/Zcb2P0dtPQ', img:'' },
+  { codigo:'05', nombre:'HIKMICRO',                   items:'', url:'https://forms.cloud.microsoft/r/eX5BrsRNe3', img:'' },
+  { codigo:'06', nombre:'SDT Ultrasound Solutions',   items:'', url:'https://forms.cloud.microsoft/r/FgLWj3dxnJ', img:'' },
+  { codigo:'07', nombre:'Herramientas y Consumibles', items:'', url:'https://forms.cloud.microsoft/r/iyPPgFHajk', img:'' },
+  { codigo:'08', nombre:'Módulos de Prueba',          items:'', url:'https://forms.cloud.microsoft/r/TbpzMcrdAM', img:'' }
 ];
-/* ===================== FIN DEL BLOQUE EDITABLE ========================== */
+
 
 (function () {
   var lista = document.getElementById('lista');
