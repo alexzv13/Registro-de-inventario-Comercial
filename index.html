@@ -58,7 +58,7 @@
     width:52px; height:52px; flex-shrink:0; overflow:hidden;
     border:1px solid var(--line); border-radius:2px; background:var(--plate);
   }
-  .plate img{width:100%; height:100%; object-fit:cover; display:block}
+  .plate img{width:100%; height:100%; object-fit:contain; padding:6px; background:#FFFFFF; display:block}
   .num{font-family:'IBM Plex Mono',monospace; font-variant-numeric:tabular-nums; font-size:19px; font-weight:600; color:var(--accent)}
   .body{flex-grow:1; min-width:0; display:flex; flex-direction:column; gap:3px}
   .name{font-size:16px; font-weight:600; line-height:1.25}
@@ -99,7 +99,7 @@
 
   <div class="notes">
     <p>Si te llevas el kit incompleto, marca en el formulario solo los ítems que salen.</p>
-    <p>Todo movimiento será registrado por correo automaticamente, asi que ten precaución.</p>
+    <p>Cada registro envía una notificación por correo. Revisa los datos antes de enviar.</p>
   </div>
 
 </div>
@@ -155,7 +155,7 @@ var KITS = [
     name.textContent = k.nombre;
     var meta = document.createElement('span');
     meta.className = 'meta';
-    meta.textContent = (k.items ? k.items + ' ítems · ' : '') + 'Formulario de salida';
+    meta.textContent = (k.items ? k.items + ' ítems · ' : '') + 'Registre su Entrada/Salida';
     body.appendChild(name);
     body.appendChild(meta);
 
