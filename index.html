@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Registro de equipos — COSAC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap">
+<style>
+  :root{
+    --bg:#14120F; --surface:#1C1A16; --plate:#211E19;
+    --line:rgba(240,236,228,0.14); --fg:#F0ECE4; --muted:#A39C8E; --accent:#E0A233;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  :root[data-theme="light"]{
+    --bg:#F4F1E9; --surface:#FFFFFF; --plate:#F4F1E9;
+    --line:rgba(20,18,15,0.16); --fg:#1A1815; --muted:#5C564B; --accent:#A85F12;
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{
+    margin:0; padding:32px 0 44px;
+    background:var(--bg); color:var(--fg);
+    font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{width:100%; max-width:960px; margin:0 auto; padding:0 20px}
+  .top{display:flex; align-items:center; gap:10px}
+  .mark{display:inline-block; width:14px; height:14px; background:var(--accent); border-radius:1px; flex-shrink:0}
+  .brand{font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; letter-spacing:.16em; text-transform:uppercase}
+  .area{font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; letter-spacing:.06em; color:var(--muted)}
+  .theme-btn{
+    margin-left:auto; display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px; flex-shrink:0;
+    background:transparent; border:1px solid var(--line); border-radius:3px;
+    color:var(--muted); cursor:pointer;
+  }
+  .theme-btn:hover,.theme-btn:focus-visible{color:var(--accent); border-color:var(--accent)}
+  .rule{height:1px; background:var(--line); margin:22px 0 18px}
+  h1{margin:0 0 8px; font-size:28px; line-height:1.15; font-weight:700; letter-spacing:-.01em}
+  .sub{margin:0 0 26px; font-size:15px; line-height:1.5; max-width:52ch; color:var(--muted)}
+  .back{
+    display:inline-flex; align-items:center; gap:8px;
+    margin:0 0 18px; padding:10px 14px 10px 10px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--muted); text-decoration:none;
+    border:1px solid var(--line); border-radius:3px; background:transparent; cursor:pointer;
+  }
+  .back:hover,.back:focus-visible{color:var(--accent); border-color:var(--accent)}
+  .list{display:grid; gap:10px; grid-template-columns:1fr; list-style:none; margin:0; padding:0}
+  .kit{
+    display:flex; align-items:center; gap:14px; padding:14px;
+    text-decoration:none; color:inherit;
+    border:1px solid var(--line); border-radius:3px; background:var(--surface);
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .kit:hover,.kit:focus-visible{border-color:var(--accent); transform:translateY(-1px)}
+  .kit:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .kit:hover .chev,.kit:focus-visible .chev{color:var(--accent)}
+  .plate{
+    display:flex; align-items:center; justify-content:center;
+    width:52px; height:52px; flex-shrink:0; overflow:hidden;
+    border:1px solid var(--line); border-radius:2px; background:var(--plate);
+  }
+  .plate img{width:100%; height:100%; object-fit:contain; padding:6px; background:#FFFFFF; display:block}
+  .num{font-family:'IBM Plex Mono',monospace; font-variant-numeric:tabular-nums; font-size:19px; font-weight:600; color:var(--accent)}
+  .body{flex-grow:1; min-width:0; display:flex; flex-direction:column; gap:3px}
+  .name{font-size:16px; font-weight:600; line-height:1.25}
+  .meta{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em; color:var(--muted)}
+  .chev{flex-shrink:0; display:flex; color:var(--muted)}
+  .notes{margin-top:28px; padding-top:18px; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:6px}
+  .notes p{margin:0; font-size:13px; line-height:1.6; color:var(--muted)}
+  @media (min-width:760px){
+    .wrap{padding:0 40px}
+    .list{grid-template-columns:1fr 1fr; gap:12px}
+    h1{font-size:38px}
+    .kit{padding:16px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <span class="mark" aria-hidden="true"></span>
+    <span class="brand">COSAC</span>
+    <span class="area">/ Almacén de Comercial</span>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Cambiar entre modo oscuro y modo campo">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5"></circle>
+        <path d="M10 1.5v2M10 16.5v2M18.5 10h-2M3.5 10h-2M16 4l-1.4 1.4M5.4 14.6L4 16M16 16l-1.4-1.4M5.4 5.4L4 4"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="rule"></div>
+
+  <div id="vista"></div>
+
+  <div class="notes">
+    <p>Si te llevas el kit incompleto, marca en el formulario solo los ítems que salen.</p>
+    <p>Cada registro envía una notificación por correo. Revisa los datos antes de enviar.</p>
+  </div>
+
+</div>
+
+<script>
+/* =========================================================================
+   EDITA SOLO ESTE BLOQUE
+
+   Un kit puede ser de DOS tipos:
+
+   A) Kit directo  -> lleva 'url'. Al tocarlo abre el formulario.
+      { codigo:'01', nombre:'Airius', img:'AIRIUS1.jpg', url:'https://...' },
+
+   B) Kit con submenú -> lleva 'id' y 'equipos'. Al tocarlo abre una
+      segunda pantalla con la lista de equipos de esa marca.
+      { codigo:'05', nombre:'HIKMICRO', img:'Hikmicro1.jpg', id:'hikmicro',
+        equipos:[
+          { nombre:'AD21', url:'https://...' },
+          { nombre:'Pocket', url:'https://...' }
+        ]
+      },
+
+   Reglas: comillas simples en los textos, coma al final de cada línea
+   menos la última de cada lista. El 'id' va sin espacios ni tildes.
+   ========================================================================= */
+var KITS = [
+
+  { codigo:'01', nombre:'Airius', img:'AIRIUS1.jpg',
+    url:'https://forms.cloud.microsoft/r/AyD4QcUs5h' },
+
+  { codigo:'02', nombre:'Kit Intellinova', img:'Intellinova.jpg',
+    url:'https://forms.cloud.microsoft/r/q3tvj5v4xf' },
+
+  { codigo:'03', nombre:'SPM Instrument', img:'SPM1.jpg', id:'spm',
+    equipos:[
+      { nombre:'VC200',  url:'#' },
+      { nombre:'BC200',  url:'#' },
+      { nombre:'General / otros', url:'https://forms.cloud.microsoft/r/PZa63Bd15T' }
+    ]
+  },
+
+  { codigo:'04', nombre:'Electrónico', img:'Fluke1.jpg',
+    url:'https://forms.cloud.microsoft/r/Zcb2P0dtPQ' },
+
+  { codigo:'05', nombre:'HIKMICRO', img:'Hikmicro1.jpg', id:'hikmicro',
+    equipos:[
+      { nombre:'AD21',   url:'#' },
+      { nombre:'B21LS',  url:'#' },
+      { nombre:'Eco-V',  url:'#' },
+      { nombre:'FP21',   url:'#' },
+      { nombre:'Mini2',  url:'#' },
+      { nombre:'Pocket', url:'#' },
+      { nombre:'General / otros', url:'https://forms.cloud.microsoft/r/eX5BrsRNe3' }
+    ]
+  },
+
+  { codigo:'06', nombre:'SDT Ultrasound Solutions', img:'SDT1.jpg', id:'sdt',
+    equipos:[
+      { nombre:'SDT 340',      url:'#' },
+      { nombre:'SONAVU+',      url:'#' },
+      { nombre:'LUBExpert',    url:'#' },
+      { nombre:'ULTRAChecker 066', url:'#' },
+      { nombre:'ULTRAChecker 067', url:'#' },
+      { nombre:'Adicionales',  url:'#' },
+      { nombre:'General / otros', url:'https://forms.cloud.microsoft/r/FgLWj3dxnJ' }
+    ]
+  },
+
+  { codigo:'07', nombre:'Herramientas y Consumibles', img:'Insize.jpg',
+    url:'https://forms.cloud.microsoft/r/iyPPgFHajk' },
+
+  { codigo:'08', nombre:'Módulos de Prueba', img:'Modulo.jpg',
+    url:'https://forms.cloud.microsoft/r/TbpzMcrdAM' },
+
+  { codigo:'09', nombre:'Dispositivos de Red y Portátiles', img:'Lenovo.jpg',
+    url:'https://forms.cloud.microsoft/r/Jq7swbfj48' }
+
+];
+
+var TITULO_PRINCIPAL = 'Elige el kit que entra o sale';
+var SUBTITULO_PRINCIPAL = 'Selecciona el kit, revisa su checklist y registra su entrada o salida del almacén de Comercial.';
+/* ===================== FIN DEL BLOQUE EDITABLE ========================== */
+
+(function () {
+  var vista = document.getElementById('vista');
+
+  function svgChev() {
+    return '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">' +
+      '<path d="M6.5 3.5L12 9L6.5 14.5" stroke="currentColor" stroke-width="1.6" ' +
+      'stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+  }
+
+  function crearPlaca(texto, imagen) {
+    var plate = document.createElement('span');
+    plate.className = 'plate';
+    function ponerTexto() {
+      plate.innerHTML = '';
+      var n = document.createElement('span');
+      n.className = 'num';
+      n.textContent = texto;
+      plate.appendChild(n);
+    }
+    if (imagen) {
+      var im = document.createElement('img');
+      im.src = 'img/' + imagen;
+      im.alt = '';
+      im.onerror = ponerTexto;
+      plate.appendChild(im);
+    } else {
+      ponerTexto();
+    }
+    return plate;
+  }
+
+  function crearFila(opts) {
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.className = 'kit';
+    a.href = opts.href;
+
+    var body = document.createElement('div');
+    body.className = 'body';
+    var nm = document.createElement('span');
+    nm.className = 'name';
+    nm.textContent = opts.nombre;
+    var mt = document.createElement('span');
+    mt.className = 'meta';
+    mt.textContent = opts.meta;
+    body.appendChild(nm);
+    body.appendChild(mt);
+
+    var chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.innerHTML = svgChev();
+
+    a.appendChild(crearPlaca(opts.placa, opts.img));
+    a.appendChild(body);
+    a.appendChild(chev);
+    li.appendChild(a);
+    return li;
+  }
+
+  function vistaPrincipal() {
+    vista.innerHTML = '';
+    var h = document.createElement('h1');
+    h.textContent = TITULO_PRINCIPAL;
+    var p = document.createElement('p');
+    p.className = 'sub';
+    p.textContent = SUBTITULO_PRINCIPAL;
+    var ul = document.createElement('ul');
+    ul.className = 'list';
+
+    KITS.forEach(function (k) {
+      var agrupado = !!(k.equipos && k.equipos.length);
+      ul.appendChild(crearFila({
+        href: agrupado ? '#' + k.id : (k.url || '#'),
+        placa: k.codigo,
+        img: k.img,
+        nombre: k.nombre,
+        meta: agrupado ? (k.equipos.length + ' equipos') : 'Registrar entrada / salida'
+      }));
+    });
+
+    vista.appendChild(h);
+    vista.appendChild(p);
+    vista.appendChild(ul);
+  }
+
+  function vistaKit(k) {
+    vista.innerHTML = '';
+
+    var volver = document.createElement('a');
+    volver.className = 'back';
+    volver.href = '#';
+    volver.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">' +
+      '<path d="M8.5 2.5L4 7l4.5 4.5" stroke="currentColor" stroke-width="1.6" ' +
+      'stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Todos los kits</span>';
+
+    var h = document.createElement('h1');
+    h.textContent = k.nombre;
+    var p = document.createElement('p');
+    p.className = 'sub';
+    p.textContent = 'Elige el equipo y registra su entrada o salida.';
+
+    var ul = document.createElement('ul');
+    ul.className = 'list';
+    k.equipos.forEach(function (e, i) {
+      var n = (i + 1) < 10 ? '0' + (i + 1) : String(i + 1);
+      ul.appendChild(crearFila({
+        href: e.url || '#',
+        placa: n,
+        img: '',
+        nombre: e.nombre,
+        meta: 'Registrar entrada / salida'
+      }));
+    });
+
+    vista.appendChild(volver);
+    vista.appendChild(h);
+    vista.appendChild(p);
+    vista.appendChild(ul);
+  }
+
+  function pintar() {
+    var id = (location.hash || '').replace('#', '');
+    var kit = null;
+    KITS.forEach(function (k) { if (k.id && k.id === id) { kit = k; } });
+    if (kit) { vistaKit(kit); } else { vistaPrincipal(); }
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener('hashchange', pintar);
+  pintar();
+
+  var root = document.documentElement;
+  var saved = null;
+  try { saved = localStorage.getItem('cosac-tema'); } catch (e) {}
+  if (saved === 'light' || saved === 'dark') {
+    root.setAttribute('data-theme', saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    root.setAttribute('data-theme', 'light');
+  }
+
+  document.getElementById('themeBtn').addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('cosac-tema', next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
