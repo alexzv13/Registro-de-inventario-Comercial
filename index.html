@@ -138,11 +138,12 @@ var KITS = [
   { codigo:'02', nombre:'Kit Intellinova', img:'Intellinova.jpg',
     url:'https://forms.cloud.microsoft/r/q3tvj5v4xf' },
 
-  { codigo:'03', nombre:'SPM Instrument', img:'SPM1.jpg', id:'spm',
+    { codigo:'03', nombre:'SPM Instrument', img:'SPM1.jpg', id:'spm',
     equipos:[
-      { nombre:'VC200',  url:'#' },
-      { nombre:'BC200',  url:'#' },
-      { nombre:'General / otros', url:'https://forms.cloud.microsoft/r/PZa63Bd15T' }
+      { nombre:'VC200',  img:'VC200.jpg',  url:'https://forms.cloud.microsoft/r/rY3LHNBad2' },
+      { nombre:'BC200',  img:'BC200.jpg',  url:'https://forms.cloud.microsoft/r/S1rp8ZHeAm' },
+      { nombre:'Lámpara estroboscópica 18432', img:'Lampara.jpg', url:'https://forms.cloud.microsoft/r/ck7zhEVBEw' },
+      { nombre:'General / otros', img:'SPM1.jpg', url:'https://forms.cloud.microsoft/r/PZa63Bd15T' }
     ]
   },
 
@@ -151,25 +152,23 @@ var KITS = [
 
   { codigo:'05', nombre:'HIKMICRO', img:'Hikmicro1.jpg', id:'hikmicro',
     equipos:[
-      { nombre:'AD21',   url:'#' },
-      { nombre:'B21LS',  url:'#' },
-      { nombre:'Eco-V',  url:'#' },
-      { nombre:'FP21',   url:'#' },
-      { nombre:'Mini2',  url:'#' },
-      { nombre:'Pocket', url:'#' },
-      { nombre:'General / otros', url:'https://forms.cloud.microsoft/r/eX5BrsRNe3' }
+      { nombre:'AD21',  img:'AD21.jpg',  url:'https://forms.cloud.microsoft/r/yzKAZSzq7e' },
+      { nombre:'B21LS',  img:'B21LS.jpg',  url:'https://forms.cloud.microsoft/r/0asfLcarz2' },
+      { nombre:'Eco-V',  img:'ecov.jpg',  url:'https://forms.cloud.microsoft/r/TwbWKpSUEh' },
+      { nombre:'F21',  img:'F21.jpg',  url:'https://forms.cloud.microsoft/r/eX5BrsRNe3' },
+      { nombre:'Mini2',  img:'mini2.jpg',  url:'https://forms.cloud.microsoft/r/EcdcsjbdXj' },
+      { nombre:'Pocket',  img:'Pocket.jpg',  url:'https://forms.cloud.microsoft/r/t7i51cxZFg' }
     ]
   },
 
-  { codigo:'06', nombre:'SDT Ultrasound Solutions', img:'SDT1.jpg', id:'sdt',
+    { codigo:'06', nombre:'SDT Ultrasound Solutions', img:'SDT1.jpg', id:'sdt',
     equipos:[
-      { nombre:'SDT 340',      url:'#' },
-      { nombre:'SONAVU+',      url:'#' },
-      { nombre:'LUBExpert',    url:'#' },
-      { nombre:'ULTRAChecker 066', url:'#' },
-      { nombre:'ULTRAChecker 067', url:'#' },
-      { nombre:'Adicionales',  url:'#' },
-      { nombre:'General / otros', url:'https://forms.cloud.microsoft/r/FgLWj3dxnJ' }
+      { nombre:'SDT 340',           img:'SDT340.jpg',    url:'https://forms.cloud.microsoft/r/8UQfQhMpXB' },
+      { nombre:'SONAVU+',           img:'Sonavu.jpg',    url:'https://forms.cloud.microsoft/r/Y5AjpFgZEQ' },
+      { nombre:'LUBExpert',         img:'Lubexpert.jpg', url:'https://forms.cloud.microsoft/r/Pkb0daw7n9' },
+      { nombre:'ULTRAChecker 066',  img:'Ultra066.jpg',  url:'https://forms.cloud.microsoft/r/HQ2Zfa3EML' },
+      { nombre:'ULTRAChecker 067',  img:'Ultra067.jpg',  url:'https://forms.cloud.microsoft/r/9epiVUWijM' },
+      { nombre:'General / otros',   img:'',              url:'https://forms.cloud.microsoft/r/FgLWj3dxnJ' }
     ]
   },
 
@@ -296,7 +295,7 @@ var SUBTITULO_PRINCIPAL = 'Selecciona el kit, revisa su checklist y registra su 
       ul.appendChild(crearFila({
         href: e.url || '#',
         placa: n,
-        img: '',
+        img: e.img,
         nombre: e.nombre,
         meta: 'Registrar entrada / salida'
       }));
